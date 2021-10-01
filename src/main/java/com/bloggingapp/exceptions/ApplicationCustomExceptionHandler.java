@@ -27,4 +27,10 @@ public class ApplicationCustomExceptionHandler {
         HttpStatus status= HttpStatus.NOT_FOUND;
         return new ResponseEntity<>(MethodUtils.prepareErrorJSON(status,exception),status);
     }
+
+    @ExceptionHandler(value=CommentNotFoundException.class)
+    public ResponseEntity<String> commentNotFoundExceptionException(CommentNotFoundException exception){
+        HttpStatus status= HttpStatus.NOT_FOUND;
+        return new ResponseEntity<>(MethodUtils.prepareErrorJSON(status,exception),status);
+    }
 }

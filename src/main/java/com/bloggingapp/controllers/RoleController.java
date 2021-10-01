@@ -25,7 +25,7 @@ public class RoleController {
     }
 
 
-    @PostMapping("/admin/create-role")
+    @PostMapping("/admin/create/role")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<RoleEntity> createRole(@RequestBody RoleEntity role){
         if (role.getRoleName().isEmpty() || role.getRoleName() == ""){

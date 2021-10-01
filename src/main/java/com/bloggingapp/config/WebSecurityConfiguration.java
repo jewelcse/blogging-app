@@ -31,6 +31,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService jwtService;
 
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -40,6 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors();
+        httpSecurity.headers().frameOptions().disable();
         httpSecurity.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/user/login", "/api/user/register","/h2/**").permitAll()

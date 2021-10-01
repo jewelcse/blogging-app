@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Data
 @AllArgsConstructor
@@ -25,8 +26,14 @@ public class PostEntity {
     @Column(name ="post_body",columnDefinition = "TEXT", nullable = false)
     private String postBody;
 
+    @Column(name = "user_id",nullable = false)
+    private Long userId;
+
     @Column(name = "is_published")
     private boolean isPublished;
+
+
+
 
 
 }

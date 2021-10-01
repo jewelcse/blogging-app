@@ -3,25 +3,15 @@ package com.bloggingapp.servicesImpl;
 
 import com.bloggingapp.entities.RoleEntity;
 import com.bloggingapp.entities.UserEntity;
-import com.bloggingapp.entities.UserRoleEntity;
 import com.bloggingapp.exceptions.ApplicationException;
-import com.bloggingapp.models.requestModels.UserLoginRequestModel;
-import com.bloggingapp.models.requestModels.UserRequestModel;
-import com.bloggingapp.models.responseModels.UserLoginResponseModel;
-import com.bloggingapp.models.responseModels.UserResponseModel;
+import com.bloggingapp.exceptions.UserNotFoundException;
+import com.bloggingapp.models.requestModels.UserRegisterRequestModel;
 import com.bloggingapp.repositories.RoleRepository;
 import com.bloggingapp.repositories.UserRepository;
 import com.bloggingapp.services.UserService;
 import com.bloggingapp.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,11 +31,7 @@ public class UserServiceImpl implements UserService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    public UserServiceImpl(UserRepository repository,
-                           RoleRepository roleRepository,
-                           PasswordEncoder passwordEncoder,
-                           JwtUtil jwtUtil,
-                           AuthenticationManager authenticationManager){
+    public UserServiceImpl(UserRepository repository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil, AuthenticationManager authenticationManager){
         this.userRepository = repository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -53,31 +39,80 @@ public class UserServiceImpl implements UserService {
         this.authenticationManager = authenticationManager;
     }
     @Override
-    public UserEntity saveUser(UserRequestModel userRequestModel) {
+    public UserEntity saveUser(UserRegisterRequestModel userRegisterRequestModel) {
 
-        Optional<UserEntity> doesExitUser = userRepository.findByUserName(userRequestModel.getUsername());
+        Optional<UserEntity> doesExitUser = userRepository.findByUserName(userRegisterRequestModel.getUsername());
 
         if (!doesExitUser.isEmpty()){
             throw new ApplicationException("User Already Exit!");
         }
 
         UserEntity newUser = new UserEntity();
-        newUser.setUserFirstName(userRequestModel.getUser_first_name());
-        newUser.setUserLastName(userRequestModel.getUser_last_name());
-        newUser.setUserName(userRequestModel.getUsername());
-        newUser.setUserEmail(userRequestModel.getUser_email());
-        newUser.setUserPassword(getEncodedPassword(userRequestModel.getUser_password()));
+        newUser.setUserFirstName(userRegisterRequestModel.getUser_first_name());
+        newUser.setUserLastName(userRegisterRequestModel.getUser_last_name());
+        newUser.setUserName(userRegisterRequestModel.getUsername());
+        newUser.setUserEmail(userRegisterRequestModel.getUser_email());
+        newUser.setUserPassword(getEncodedPassword(userRegisterRequestModel.getUser_password()));
 
 
-        RoleEntity defaultRole = roleRepository.findByRoleName("USER").get();
+        RoleEntity defaultRole = roleRepository.findByRoleName("BLOGGER").get();
 
         Set<RoleEntity> usersRole = new HashSet<>();
         usersRole.add(defaultRole);
 
         newUser.setRole(usersRole);
+        newUser.setApproved(false);
         return userRepository.save(newUser);
     }
 
+    @Override
+    public UserEntity createNewAdmin(UserRegisterRequestModel userRegisterRequestModel) {
+
+        Optional<UserEntity> doesExitAdmin = userRepository.findByUserName(userRegisterRequestModel.getUsername());
+
+        if (!doesExitAdmin.isEmpty()){
+            throw new ApplicationException("Admin Already Exit!");
+        }
+
+        UserEntity newAdmin = new UserEntity();
+        newAdmin.setUserFirstName(userRegisterRequestModel.getUser_first_name());
+        newAdmin.setUserLastName(userRegisterRequestModel.getUser_last_name());
+        newAdmin.setUserName(userRegisterRequestModel.getUsername());
+        newAdmin.setUserEmail(userRegisterRequestModel.getUser_email());
+        newAdmin.setUserPassword(getEncodedPassword(userRegisterRequestModel.getUser_password()));
+
+
+        RoleEntity defaultAdminRole = roleRepository.findByRoleName("ADMIN").get();
+
+        Set<RoleEntity> adminRoles = new HashSet<>();
+        adminRoles.add(defaultAdminRole);
+        newAdmin.setRole(adminRoles);
+        newAdmin.setApproved(true);
+        return userRepository.save(newAdmin);
+    }
+
+    @Override
+    public Optional<UserEntity> findUserById(Long userId) {
+        return userRepository.findById(userId);
+    }
+
+    @Override
+    public void approveUserAccountByAdmin(Long userId) {
+
+        Optional<UserEntity> doesUserExist = userRepository.findById(userId);
+        if (doesUserExist.isEmpty()){
+            throw new UserNotFoundException("User Doesn't Exit For Id: " + userId);
+        }
+        if (doesUserExist.get().isApproved()){
+            throw new ApplicationException("User Already Approved By Admin!");
+        }
+        userRepository.approveUserAccount(userId);
+    }
+
+    @Override
+    public Optional<UserEntity> findUserByUsername(String userName) {
+        return userRepository.findByUserName(userName);
+    }
 
     @Override
     public void initRoleAndUser() {
@@ -87,7 +122,7 @@ public class UserServiceImpl implements UserService {
         roleRepository.save(adminRole);
 
         RoleEntity userRole = new RoleEntity();
-        userRole.setRoleName("USER");
+        userRole.setRoleName("BLOGGER");
         roleRepository.save(userRole);
 
         UserEntity adminUser = new UserEntity();
@@ -100,13 +135,13 @@ public class UserServiceImpl implements UserService {
         Set<RoleEntity> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
-
+        adminUser.setApproved(true);
         userRepository.save(adminUser);
 
     }
 
 
-    public String getEncodedPassword(String password) {
+    private String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }
 

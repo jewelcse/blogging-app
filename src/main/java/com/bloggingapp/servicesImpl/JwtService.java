@@ -34,6 +34,7 @@ public class JwtService implements UserDetailsService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+
     public UserLoginResponseModel login(UserLoginRequestModel jwtRequest) throws Exception {
         String userName = jwtRequest.getUsername();
         String userPassword = jwtRequest.getPassword();
