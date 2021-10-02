@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentRequestModel {
+public class PostReactionRequestModel {
 
-    private String commentBody;
     private Long postId;
+    private boolean reaction;
+
 }

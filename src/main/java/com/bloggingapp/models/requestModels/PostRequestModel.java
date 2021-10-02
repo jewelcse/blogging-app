@@ -12,6 +12,6 @@ public class PostRequestModel {
 
     private String title;
     private String body;
-    private Long userId;
+
 
 }

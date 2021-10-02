@@ -42,43 +42,20 @@ public class CommentController {
 
     @PostMapping("/post/create/comment")
     @PreAuthorize("hasAnyRole('BLOGGER','ADMIN')")
-    public ResponseEntity<CommentEntity> createComment(@RequestBody CommentRequestModel commentRequestModel) {
-        if (commentRequestModel.getPostId() <= 0) {
-            throw new ApplicationException("Invalid Post Id :" + commentRequestModel.getPostId());
-        }
-        if (commentRequestModel.getUserId() <= 0) {
-            throw new ApplicationException("Invalid User Id :" + commentRequestModel.getUserId());
-        }
-        Optional<PostEntity> doesExiPostEntity = postService.findPostById(commentRequestModel.getPostId());
-        if (doesExiPostEntity.isEmpty()) {
-            throw new PostNotFoundException("Post Not Found For Id :" + commentRequestModel.getPostId());
-        }
-        Optional<UserEntity> doesExiUserEntity = userService.findUserById(commentRequestModel.getUserId());
-        if (doesExiUserEntity.isEmpty()) {
-            throw new UserNotFoundException("User Not Found For Id :" + commentRequestModel.getUserId());
-        }
-        if (commentRequestModel.getCommentBody().isEmpty() || commentRequestModel.getCommentBody() == "") {
-            throw new ApplicationException("Comment Body Can't be empty!");
-        }
-        return new ResponseEntity<>(commentService.createComment(commentRequestModel), HttpStatus.CREATED);
+    public ResponseEntity<CommentEntity> createComment(@RequestBody CommentRequestModel commentRequestModel,Principal principal) {
+        return new ResponseEntity<>(commentService.createComment(commentRequestModel,principal), HttpStatus.CREATED);
     }
 
 
     @GetMapping("/post/{postId}/comments")
     public Page<CommentEntity> getAllCommentsByPostId(@PathVariable Long postId, Pageable pageable) {
-        return commentService.findByPostId(postId, pageable);
+        return commentService.findCommentsByPostId(postId, pageable);
     }
 
     @GetMapping("/post/{postId}/comment/remove/{commentId}")
     @PreAuthorize("hasAnyRole('BLOGGER','ADMIN')")
     public ResponseEntity<String> removeCommentById(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId, Principal principal) {
-        if (commentId <= 0) {
-            throw new ApplicationException("Invalid Comment Id " + commentId);
-        }
-        Optional<UserEntity> user = userService.findUserByUsername(principal.getName());
-        // post owner can and admin only remove comments
-        // will do it tomorrow morning
-        commentService.removePostCommentByPostIdAndCommentId(postId, commentId);
+        commentService.removePostCommentByPostIdAndCommentId(postId, commentId,principal);
         return new ResponseEntity<>(MethodUtils.prepareSuccessJSON(HttpStatus.OK, "Comment Removed Successful"), HttpStatus.OK);
     }
 

@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -112,6 +113,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserEntity> findUserByUsername(String userName) {
         return userRepository.findByUserName(userName);
+    }
+
+    @Override
+    public List<UserEntity> getAllUser() {
+        return userRepository.findAll();
     }
 
     @Override

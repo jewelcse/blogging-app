@@ -19,6 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 
 @RestController
@@ -114,6 +115,12 @@ public class UserController {
         logger.info("Creating a new Admin");
         return new ResponseEntity<>(userService.createNewAdmin(userRegisterRequestModel), HttpStatus.OK);
 
+    }
+
+    @GetMapping("/get/users")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<UserEntity>> getUsers(){
+        return new ResponseEntity<>(userService.getAllUser(),HttpStatus.OK);
     }
 
 

@@ -3,13 +3,14 @@ package com.bloggingapp.services;
 import com.bloggingapp.entities.PostEntity;
 import com.bloggingapp.models.requestModels.PostRequestModel;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 public interface PostService {
 
 
-    PostEntity save(PostRequestModel postRequestModel);
+    PostEntity save(PostRequestModel postRequestModel, Principal principal);
 
     Optional<PostEntity> findPostById(Long postId);
 

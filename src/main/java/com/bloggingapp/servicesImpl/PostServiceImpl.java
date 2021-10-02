@@ -14,6 +14,7 @@ import com.bloggingapp.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostEntity save(PostRequestModel postRequestModel) {
+    public PostEntity save(PostRequestModel postRequestModel, Principal principal) {
 
         if (postRequestModel.getTitle().isEmpty() || postRequestModel.getTitle() == "") {
             throw new ApplicationException("Post Title Can't Be Empty!");
@@ -41,15 +42,11 @@ public class PostServiceImpl implements PostService {
             throw new ApplicationException("Post Body Can't Be Empty!");
         }
 
-        if (postRequestModel.getUserId() <= 0) {
-            throw new ApplicationException("Invalid User Id");
-        }
-
         PostEntity newPost = new PostEntity();
 
-        Optional<UserEntity> user = userRepository.findById(postRequestModel.getUserId());
+        Optional<UserEntity> user = userRepository.findByUserName(principal.getName());
         if (user.isEmpty()) {
-            throw new UserNotFoundException("User Not Found for Id: " + postRequestModel.getUserId());
+            throw new UserNotFoundException("User Not Found for Id: " + user.get().getUserId());
         }
 
         if (!user.get().isApproved()){
@@ -65,7 +62,7 @@ public class PostServiceImpl implements PostService {
         }
         newPost.setPostTitle(postRequestModel.getTitle());
         newPost.setPostBody(postRequestModel.getBody());
-        newPost.setUserId(postRequestModel.getUserId());
+        newPost.setUserId(user.get().getUserId());
 
         return postRepository.save(newPost);
     }

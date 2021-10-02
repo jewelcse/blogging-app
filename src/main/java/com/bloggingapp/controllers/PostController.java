@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,9 +34,9 @@ public class PostController {
 
     @PostMapping("/create/post")
     @PreAuthorize("hasAnyRole('ADMIN','BLOGGER')")
-    public ResponseEntity<PostEntity> createPost(@RequestBody PostRequestModel postRequestModel) {
+    public ResponseEntity<PostEntity> createPost(@RequestBody PostRequestModel postRequestModel, Principal principal) {
         logger.info("Creating a new post");
-        return new ResponseEntity<>(postService.save(postRequestModel), HttpStatus.CREATED);
+        return new ResponseEntity<>(postService.save(postRequestModel,principal), HttpStatus.CREATED);
     }
 
     @PostMapping("/edit/post/{postId}")
