@@ -6,18 +6,15 @@ import com.bloggingapp.entities.PostEntity;
 import com.bloggingapp.entities.UserEntity;
 import com.bloggingapp.exceptions.ApplicationException;
 import com.bloggingapp.exceptions.PostNotFoundException;
-import com.bloggingapp.exceptions.UserNotFoundException;
 import com.bloggingapp.models.requestModels.CommentRequestModel;
 import com.bloggingapp.repositories.CommentRepository;
 import com.bloggingapp.repositories.PostRepository;
 import com.bloggingapp.repositories.UserRepository;
 import com.bloggingapp.services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -63,8 +60,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Page<CommentEntity> findCommentsByPostId(Long postId, Pageable pageable) {
-        return commentRepository.findByPostId(postId, pageable);
+    public List<CommentEntity> findCommentsByPostId(Long postId) {
+        return commentRepository.findByPostId(postId);
     }
 
     @Override

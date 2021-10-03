@@ -6,7 +6,6 @@ import com.bloggingapp.repositories.RoleRepository;
 import com.bloggingapp.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 
@@ -23,10 +22,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public RoleEntity save(RoleEntity roleEntity) {
 
-        Optional<RoleEntity> doesExitRole = roleRepository.findByRoleName(roleEntity.getRoleName());
+        Optional<RoleEntity> doesExistRole = roleRepository.findByRoleName(roleEntity.getRoleName());
 
-        if (!doesExitRole.isEmpty()){
-            throw new ApplicationException("Already Exit {"+ roleEntity.getRoleName()+"} role!");
+        if (!doesExistRole.isEmpty()){
+            throw new ApplicationException("Already Exist {"+ roleEntity.getRoleName()+"} role!");
         }
 
         return roleRepository.save(roleEntity);

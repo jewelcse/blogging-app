@@ -11,11 +11,8 @@ import com.bloggingapp.repositories.PostReactionRepository;
 import com.bloggingapp.repositories.PostRepository;
 import com.bloggingapp.repositories.UserRepository;
 import com.bloggingapp.services.PostReactionService;
-import com.bloggingapp.services.PostService;
-import com.bloggingapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.security.Principal;
 import java.util.Optional;
 
@@ -37,9 +34,9 @@ public class PostReactionServiceImpl implements PostReactionService {
     @Override
     public void makeReaction(PostReactionRequestModel postReactionRequestModel, Principal principal) {
 
-        Optional<PostEntity> doesExitPost = postRepository.findById(postReactionRequestModel.getPostId());
+        Optional<PostEntity> doesExistPost = postRepository.findById(postReactionRequestModel.getPostId());
 
-        if (doesExitPost.isEmpty()){
+        if (doesExistPost.isEmpty()){
             throw new PostNotFoundException("Post Not Found for Id: "+postReactionRequestModel.getPostId());
         }
         Optional<UserEntity> user = userRepository.findByUserName(principal.getName());
@@ -75,9 +72,9 @@ public class PostReactionServiceImpl implements PostReactionService {
     @Override
     public PostReactionCountResponseModel getPostReactions(Long postId) {
 
-        Optional<PostEntity> doesExitPost = postRepository.findById(postId);
+        Optional<PostEntity> doesExistPost = postRepository.findById(postId);
 
-        if (doesExitPost.isEmpty()){
+        if (doesExistPost.isEmpty()){
             throw new PostNotFoundException("Post Not Found for Id: "+postId);
         }
         Long likes = postReactionRepository.findLikedByPostId(postId);

@@ -44,14 +44,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
         httpSecurity.headers().frameOptions().disable();
         httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/login", "/api/user/register","/h2/**").permitAll()
+                .antMatchers(
+                        "/api/user/login",
+                        "/api/user/register",
+                        "/h2/**",
+                        "/api/get/published/posts",
+                        "/api/get/published/post/**",
+                        "/api/post/**/comments",
+                        "/api/post/**/reactions"
+                ).permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        ;
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

@@ -54,16 +54,16 @@ public class PostController {
             throw new ApplicationException("Post Body Can't Be Empty!");
         }
 
-        Optional<PostEntity> doesExitPost = postService.findPostById(postId);
+        Optional<PostEntity> doesExistPost = postService.findPostById(postId);
 
-        if (doesExitPost.isEmpty()) {
+        if (doesExistPost.isEmpty()) {
             throw new PostNotFoundException("Post Not Found for Id: " + postId);
         }
 
-        doesExitPost.get().setPostTitle(postRequestModel.getTitle());
-        doesExitPost.get().setPostBody(postRequestModel.getBody());
+        doesExistPost.get().setPostTitle(postRequestModel.getTitle());
+        doesExistPost.get().setPostBody(postRequestModel.getBody());
         logger.info("Updating post for id: " + postId);
-        return new ResponseEntity<>(postService.update(doesExitPost.get()), HttpStatus.OK);
+        return new ResponseEntity<>(postService.update(doesExistPost.get()), HttpStatus.OK);
 
     }
 
@@ -116,7 +116,7 @@ public class PostController {
         logger.info("User Post approving by Admin");
         postService.approvePost(postId);
         logger.info("User Post approved by Admin successful");
-        return new ResponseEntity<>(MethodUtils.prepareSuccessJSON(HttpStatus.OK, "Approve Post Success"), HttpStatus.OK);
+        return new ResponseEntity<>(MethodUtils.prepareSuccessJSON(HttpStatus.OK, "Approve Post Successful for id: "+postId), HttpStatus.OK);
     }
 
     @GetMapping("/remove/post/{postId}")

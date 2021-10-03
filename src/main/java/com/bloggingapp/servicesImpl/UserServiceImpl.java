@@ -13,10 +13,7 @@ import com.bloggingapp.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -42,10 +39,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity saveUser(UserRegisterRequestModel userRegisterRequestModel) {
 
-        Optional<UserEntity> doesExitUser = userRepository.findByUserName(userRegisterRequestModel.getUsername());
+        Optional<UserEntity> doesExistUser = userRepository.findByUserName(userRegisterRequestModel.getUsername());
 
-        if (!doesExitUser.isEmpty()){
-            throw new ApplicationException("User Already Exit!");
+        if (!doesExistUser.isEmpty()){
+            throw new ApplicationException("User Already Exist!");
         }
 
         UserEntity newUser = new UserEntity();
@@ -69,10 +66,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity createNewAdmin(UserRegisterRequestModel userRegisterRequestModel) {
 
-        Optional<UserEntity> doesExitAdmin = userRepository.findByUserName(userRegisterRequestModel.getUsername());
+        Optional<UserEntity> doesExistAdmin = userRepository.findByUserName(userRegisterRequestModel.getUsername());
 
-        if (!doesExitAdmin.isEmpty()){
-            throw new ApplicationException("Admin Already Exit!");
+        if (!doesExistAdmin.isEmpty()){
+            throw new ApplicationException("Admin Already Exist!");
         }
 
         UserEntity newAdmin = new UserEntity();
@@ -102,12 +99,25 @@ public class UserServiceImpl implements UserService {
 
         Optional<UserEntity> doesUserExist = userRepository.findById(userId);
         if (doesUserExist.isEmpty()){
-            throw new UserNotFoundException("User Doesn't Exit For Id: " + userId);
+            throw new UserNotFoundException("User Doesn't Exist For Id: " + userId);
         }
         if (doesUserExist.get().isApproved()){
             throw new ApplicationException("User Already Approved By Admin!");
         }
         userRepository.approveUserAccount(userId);
+    }
+
+    @Override
+    public void deActivateUserAccountByAdmin(Long userId) {
+
+        Optional<UserEntity> doesUserExist = userRepository.findById(userId);
+        if (doesUserExist.isEmpty()){
+            throw new UserNotFoundException("User Doesn't Exist For Id: " + userId);
+        }
+        if (!doesUserExist.get().isApproved()){
+            throw new ApplicationException("User Account already deactivate By Admin!");
+        }
+        userRepository.deactivateUserAccount(userId);
     }
 
     @Override

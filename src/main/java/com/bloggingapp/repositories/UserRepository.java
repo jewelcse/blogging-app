@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.transaction.Transactional;
 import java.util.Optional;
 
@@ -20,4 +19,8 @@ public interface UserRepository extends JpaRepository<UserEntity,Long> {
     @Query(value = "UPDATE users SET is_approved = true  WHERE user_id =:userId",nativeQuery = true)
     void approveUserAccount(@RequestParam("userId") Long userId);
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE users SET is_approved = false  WHERE user_id =:userId",nativeQuery = true)
+    void deactivateUserAccount(Long userId);
 }

@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.PostConstruct;
 import java.util.List;
 
@@ -85,8 +84,19 @@ public class UserController {
         }
         logger.info("Approving User Account for Id: "+userId);
         userService.approveUserAccountByAdmin(userId);
-        return new ResponseEntity<>(MethodUtils.prepareSuccessJSON(HttpStatus.OK,"User Account Approved By Admin!"), HttpStatus.OK);
+        return new ResponseEntity<>(MethodUtils.prepareSuccessJSON(HttpStatus.OK,"User Account Approved By Admin! for user id: "+userId), HttpStatus.OK);
     }
+
+    @GetMapping("/user/account/deactivate/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> deActivateUserAccountByAdmin(@PathVariable Long userId) {
+        if (userId <= 0) {
+            throw new ApplicationException("Invalid User Id for Id: " + userId);
+        }
+        userService.deActivateUserAccountByAdmin(userId);
+        return new ResponseEntity<>(MethodUtils.prepareSuccessJSON(HttpStatus.OK,"User Account Deactivated By Admin! for user id: "+userId), HttpStatus.OK);
+    }
+
 
     @PostMapping("/create/admin")
     @PreAuthorize("hasRole('ADMIN')")

@@ -13,9 +13,7 @@ import com.bloggingapp.repositories.UserRepository;
 import com.bloggingapp.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.security.Principal;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -97,7 +95,7 @@ public class PostServiceImpl implements PostService {
 
         Optional<PostEntity> postEntity = postRepository.findById(postId);
         if (postEntity.isEmpty()) {
-            throw new PostNotFoundException("Post Doesn't exit for postId :" + postId);
+            throw new PostNotFoundException("Post Doesn't exist for postId :" + postId);
         }
         return postEntity.get();
     }
@@ -127,10 +125,10 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void removePostById(Long postId) {
-        Optional<PostEntity> doesExitPost = postRepository.findById(postId);
-        if (doesExitPost.isEmpty()){
+        Optional<PostEntity> doesExistPost = postRepository.findById(postId);
+        if (doesExistPost.isEmpty()){
             throw new PostNotFoundException("Post Not Found for Id: "+postId);
         }
-        postRepository.delete(doesExitPost.get());
+        postRepository.delete(doesExistPost.get());
     }
 }
