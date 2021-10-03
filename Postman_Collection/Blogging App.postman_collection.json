@@ -1,0 +1,1683 @@
+{
+	"info": {
+		"_postman_id": "2798d930-19f3-45df-9004-26d6ceb220b4",
+		"name": "Blogging App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "create role by admin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roleName\":\"MODERATOR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/admin/create/role",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"create",
+								"role"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "registration",
+					"item": [
+						{
+							"name": "first name can't be empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"\",\r\n    \"user_last_name\":\"Hossain2\",\r\n    \"username\":\"sagor\",\r\n    \"user_email\":\"sagor2@gmail.com\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "last name can't be empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"MD. Sagor\",\r\n    \"user_last_name\":\"\",\r\n    \"username\":\"sagor\",\r\n    \"user_email\":\"sagor@gmail.com\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "username can't be empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"MD. Sagor\",\r\n    \"user_last_name\":\"\",\r\n    \"username\":\"\",\r\n    \"user_email\":\"sagor@gmail.com\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user mail can't be empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"MD. Sagor\",\r\n    \"user_last_name\":\"Hossain2\",\r\n    \"username\":\"sagor\",\r\n    \"user_email\":\"\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "password can't be empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"MD. Sagor\",\r\n    \"user_last_name\":\"\",\r\n    \"username\":\"sagor\",\r\n    \"user_email\":\"sagor@gmail.com\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register  user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"MD. Sagor\",\r\n    \"user_last_name\":\"Hossain\",\r\n    \"username\":\"sagor\",\r\n    \"user_email\":\"sagor@gmail.com\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user already exit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"MD. Sagor\",\r\n    \"user_last_name\":\"Hossain\",\r\n    \"username\":\"sagor\",\r\n    \"user_email\":\"sagor@gmail.com\",\r\n    \"user_password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "user not found",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"sagor\",\r\n    \"password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "incorrect password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"sagor\",\r\n    \"password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"sagor\",\r\n    \"password\":\"sagor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "post",
+					"item": [
+						{
+							"name": "post title cant be empty",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"This is a post by sagor 2\",\r\n    \"body\":\"Post description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/create/post",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create",
+										"post"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post body cant be empty",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"This is a post by sagor 2\",\r\n    \"body\":\"Post description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/create/post",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create",
+										"post"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create a new post",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"This is a post by sagor 2\",\r\n    \"body\":\"Post description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/create/post",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create",
+										"post"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update post by user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"This post is updated by admin\",\r\n    \"body\":\"Updated description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/edit/post/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"edit",
+										"post",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get posts by user id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWdvciIsImV4cCI6MTYzMzI0NDE4MSwiaWF0IjoxNjMzMjI2MTgxfQ.4Trex9DsCdoEGF6NGbzcw5HFfRnbl-IAJSJDu1lEdI8PiCs9ac_HH4BJ6nDbKMfB5zP3sb4dpE-bK8eeqFYSOw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/get/user/posts/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"get",
+										"user",
+										"posts",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove post by post Id by user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWdvciIsImV4cCI6MTYzMzI0NDE4MSwiaWF0IjoxNjMzMjI2MTgxfQ.4Trex9DsCdoEGF6NGbzcw5HFfRnbl-IAJSJDu1lEdI8PiCs9ac_HH4BJ6nDbKMfB5zP3sb4dpE-bK8eeqFYSOw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/remove/post/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"remove",
+										"post",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "comment",
+					"item": [
+						{
+							"name": "create comment by user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWdvciIsImV4cCI6MTYzMzI0ODAwNSwiaWF0IjoxNjMzMjMwMDA1fQ.MG-maKnwDFhbw2RFuH91OTLWpeLyfRCxZp-Z2NYFCojU718k6hnmD_Mw5KZWdsnG37Ycmth07JpAasIjWHFtbA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"commentBody\":\"This is a comment by sagor in his own post\",\r\n    \"postId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/post/create/comment",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"create",
+										"comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove post comment by post Id and comment id Copy",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NjAyMiwiaWF0IjoxNjMzMjI4MDIyfQ.uMYUaoKksvx-mM9w2iApVmmLTH9wyeI4wj6Wr2R0o9ppgyj5sQ3CkhTxOOBTp-ShMlB6gzR2bJNEnQwDgnSDpQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/post/1/comment/remove/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"1",
+										"comment",
+										"remove",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "reaction",
+					"item": [
+						{
+							"name": "make like by user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\":1,\r\n    \"reaction\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/post/make/reaction",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"make",
+										"reaction"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "make dislike by user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\":1,\r\n    \"reaction\":false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/post/make/reaction",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"make",
+										"reaction"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "login with username",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "username not found",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "incorrect password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "create a new admin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"Md. Emam\",\r\n    \"user_last_name\":\"Ahmed\",\r\n    \"username\":\"admin2\",\r\n    \"user_email\":\"admin2@gmail.com\",\r\n    \"user_password\":\"admin2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/create/admin",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin already exist",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_first_name\":\"Md. Emam\",\r\n    \"user_last_name\":\"Ahmed\",\r\n    \"username\":\"admin2\",\r\n    \"user_email\":\"admin2@gmail.com\",\r\n    \"user_password\":\"admin2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/create/admin",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "post",
+					"item": [
+						{
+							"name": "create a new post by admin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"This is a post by sagor 2\",\r\n    \"body\":\"Post description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/create/post",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create",
+										"post"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update post by admin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"This post is updated by admin\",\r\n    \"body\":\"Updated description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/edit/post/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"edit",
+										"post",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all posts",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0MzgzMywiaWF0IjoxNjMzMjI1ODMzfQ.EtRh_SCY8Ck8hgI7f3BefGti7lOgUj5nyw80heTh_6gAqM8CzFQsoEUdq4zmfizyUvOswt_GGOYVNM4oMIn8mwBearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/get/posts",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"get",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all unpublished posts",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0MzgzMywiaWF0IjoxNjMzMjI1ODMzfQ.EtRh_SCY8Ck8hgI7f3BefGti7lOgUj5nyw80heTh_6gAqM8CzFQsoEUdq4zmfizyUvOswt_GGOYVNM4oMIn8mw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/get/unpublished/posts",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"get",
+										"unpublished",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove post by post Id by admin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWdvciIsImV4cCI6MTYzMzI0NDE4MSwiaWF0IjoxNjMzMjI2MTgxfQ.4Trex9DsCdoEGF6NGbzcw5HFfRnbl-IAJSJDu1lEdI8PiCs9ac_HH4BJ6nDbKMfB5zP3sb4dpE-bK8eeqFYSOw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/remove/post/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"remove",
+										"post",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "comment",
+					"item": [
+						{
+							"name": "create comment by admin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWdvciIsImV4cCI6MTYzMzI0ODAwNSwiaWF0IjoxNjMzMjMwMDA1fQ.MG-maKnwDFhbw2RFuH91OTLWpeLyfRCxZp-Z2NYFCojU718k6hnmD_Mw5KZWdsnG37Ycmth07JpAasIjWHFtbA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"commentBody\":\"This is a comment by sagor in his own post\",\r\n    \"postId\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/post/create/comment",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"create",
+										"comment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove post comment by post Id and comment id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NjAyMiwiaWF0IjoxNjMzMjI4MDIyfQ.uMYUaoKksvx-mM9w2iApVmmLTH9wyeI4wj6Wr2R0o9ppgyj5sQ3CkhTxOOBTp-ShMlB6gzR2bJNEnQwDgnSDpQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/post/1/comment/remove/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"1",
+										"comment",
+										"remove",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "reaction",
+					"item": [
+						{
+							"name": "dislike a post",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\":1,\r\n    \"reaction\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/post/make/reaction",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"make",
+										"reaction"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like a post",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI1NjE4NSwiaWF0IjoxNjMzMjM4MTg1fQ.bU1ndgLxdLtKlbuibeNHu1l2Ry-as68RzWKk_sO9TfJ930qkg_NnyVc4eRlzqbbhZ2_lRYqiu3eUH5-Miv900w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\":1,\r\n    \"reaction\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/post/make/reaction",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"post",
+										"make",
+										"reaction"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "actions",
+					"item": [
+						{
+							"name": "approve user account",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0MzgzMywiaWF0IjoxNjMzMjI1ODMzfQ.EtRh_SCY8Ck8hgI7f3BefGti7lOgUj5nyw80heTh_6gAqM8CzFQsoEUdq4zmfizyUvOswt_GGOYVNM4oMIn8mw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/user/account/approve/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"account",
+										"approve",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "already approve user account",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/user/account/approve/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"account",
+										"approve",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deactivate user account",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/user/account/deactivate/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"account",
+										"deactivate",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "already deactivate user account",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/user/account/deactivate/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"account",
+										"deactivate",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve user post",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/approve/post/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"approve",
+										"post",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "approve user post not found",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/api/approve/post/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"approve",
+										"post",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0NzIyNSwiaWF0IjoxNjMzMjI5MjI1fQ.cIznwH1mdi05PmUN4KwhV3lvc0HHW5NH9MOKK5fur_-rWhGWUCUzfn5upCFmqBnVRssUY94oV_y9FPv18qg3rw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/get/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "Get all published posts",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzI0MzgzMywiaWF0IjoxNjMzMjI1ODMzfQ.EtRh_SCY8Ck8hgI7f3BefGti7lOgUj5nyw80heTh_6gAqM8CzFQsoEUdq4zmfizyUvOswt_GGOYVNM4oMIn8mw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/get/published/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get",
+								"published",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single post by post id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/get/published/post/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"get",
+								"published",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbWFtIiwiZXhwIjoxNjMzMTYzODcxLCJpYXQiOjE2MzMxNDU4NzF9.YqyiNwCKkoGuG4ceq0Fgfg5luJ6qei3j3jrAXDi-0CyGn40sM0ycrHWtpcLmThhe3O-IoymTOFxgeuMRYOLPQQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "get comments by post id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzIxMTU3NCwiaWF0IjoxNjMzMTkzNTc0fQ.0IOyex-KR5rPlaCbnmHmdqXlFh4fZi33SP21Nv918auDJpP7m2OXLgpQie2f-VWFSJyK_cGmxl0CzAQwtv3fAQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/api/post/1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post",
+								"1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "post reaction",
+			"item": [
+				{
+					"name": "count post reaction by post id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/post/1/reactions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post",
+								"1",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
